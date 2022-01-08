@@ -1,4 +1,5 @@
 # Labyrinth-Game
+The creator : Abdulhakeem Al-Absi
 A complete labyrinth game created mainly with JavaScript.
 The game is a virual verion of the original board labyrinth game,  https://en.wikipedia.org/wiki/Labyrinth_(board_game).
 Backgroud sound and sound effects were added to the game.
