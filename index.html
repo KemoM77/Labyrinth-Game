@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="./icons/maze2.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>The Maze (by Al-Absi )</title>
+    <audio id="soundM" src="./icons/backsound2.mp3"  loop hidden  ></audio>
+    <audio id="slide" src="./icons/slide.mp3"  hidden  ></audio>
+    <audio id="winS" src="./icons/winS.mp3"  hidden  ></audio>
+    <audio id="moveP" src="./icons/moveP.mp3"  hidden  ></audio>
+    <audio id="saveS" src="./icons/saveS.mp3"  hidden  ></audio>
+    <audio id="getTres" src="./icons/getTreas.wav"  hidden  ></audio>
+    <audio id="buttonS" src="./icons/buttonS.wav"  hidden  ></audio>
+    <audio id="rotateS" src="./icons/slide.mp3"  hidden  ></audio>
+
+
+
+
+
+
+
+</head>
+<body>
+  
+
+    <div id="StartMenu"  >
+       <section id="strtTitle"> Game Settings </section> 
+       <section id="numofplys">Number of Players :
+             <span> 
+                   <select name="NumberOfPlayersList" id="numPList">
+                       <option value="2">2</option>
+                       <option value="1">1</option>
+                       <option value="3">3</option>
+                       <option value="4">4</option>
+
+                   </select>
+                
+             </span>
+            </section>
+       <section>  Number of Cards per Player    :    
+        <span> 
+            <select name="NumberOfPlayersList" id="numTList">
+                <option value="2">2</option>
+                <option value="1">1</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+
+
+
+            </select>
+             <button type="button" id="strtGm"> Start Game </button>
+      </span>
+       </section>
+        
+       <hr style="width: 79%;" > 
+
+       <section>Do you have already saved game ? <button id="load">Load Game</button> <br> <span id="noSave"></span> </section>
+    </div>
+
+
+    <div id="Instrct"  hidden >
+        <section class="topic">Instructions</section>
+        <ul>
+            <li>The rooms in the maze are symbolized by a 7x7 square grid cells. For each room we know that which wall has a door.</li>
+            <li>Click on the arrows to slide the row or column and insert the moving room</li>
+            <li>Left click on the moving room to rotate.</li>
+            <li>By cleverly sliding the rooms players try to find their way to the treasures. 
+                The first player to find all their treasures and return to the starting square 
+                is the winner.</li>
+        </ul>    
+             <br>
+
+             <button id="underStood"> Understood </button>
+
+    </div>
+
+
+    <div class="PlayerBox"  id="p1"  hidden>
+        <section class="topic"> Player 1  <img src="./icons/pl1.png" height="33px" width="33px" >  </section>
+
+        <section>Number of Cards left : <span id="pn1"></span></section>
+
+        <section>Current Card :  <span id="pc1"></span> </section>
+
+    </div>
+
+    <div class="PlayerBox"  id="p2" hidden>
+        <section class="topic">Player 2 <img src="./icons/pl2.png" height="33px" width="33px" >  </section>
+        <section>Number of Cards left : <span id="pn2"></span></section>
+
+        <section>Current Card :  <span id="pc2"></span></section>
+
+    </div>
+    <div class="PlayerBox"  id="p3" hidden>
+        <section class="topic">Player 3<img src="./icons/pl3.png" height="33px" width="33px" > </section>
+        <section>Number of Cards left : <span id="pn3"></span></section>
+
+        <section>Current Card :  <span id="pc3"></span></section>
+    </div>
+    <div class="PlayerBox"  id="p4" hidden>
+        <section class="topic">Player 4 <img src="./icons/pl4.png" height="33px" width="33px" > </section>
+        <section>Number of Cards left : <span id="pn4"></span></section>
+
+        <section>Current Card : <span id="pc4"></span> </section>
+    </div>
+
+
+    <div id="menu" hidden >
+        <section ><img  id="soundON" src="./icons/sound.png" alt=""  height="30px" width="30px" style="top: 10px;" > <img id="soundOFF" src="./icons/nosound.png" alt=""  height="30px" width="30px" style="top: 10px;" hidden >  </section>
+        <span class="menuBt" id="save"> Save </span>
+        <span class="menuBt" id="restart">Restart</span>
+    </div>
+
+    <div id="board" hidden >
+        <img onclick="slideColsUp(event,1)" alt="arrow" src="./icons/arrow.png" class="arrup" ondrop="drop(event)" id="ar1" >
+        <img onclick="slideColsUp(event,3)" alt="arrow" src="./icons/arrow.png" class="arrup" ondrop="drop(event)" id="ar2">
+        <img onclick="slideColsUp(event,5)" alt="arrow" src="./icons/arrow.png" class="arrup" ondrop="drop(event)" id="ar3">
+        <img onclick="slideColsDown(event,1)" alt="arrow" src="./icons/arrow.png" class="arrdn" ondrop="drop(event)" id="ar4">
+        <img onclick="slideColsDown(event,3)" alt="arrow" src="./icons/arrow.png" class="arrdn" ondrop="drop(event)" id="ar5">
+        <img onclick="slideColsDown(event,5)" alt="arrow" src="./icons/arrow.png" class="arrdn" ondrop="drop(event)" id="ar6">
+        <img onclick="slideRowsRight(event,1)"  alt="arrow" src="./icons/arrow.png" class="arrL"  ondrop="drop(event)" id="ar7">
+        <img  onclick="slideRowsRight(event,3)" alt="arrow" src="./icons/arrow.png" class="arrL"  ondrop="drop(event)" id="ar8">
+        <img onclick=" slideRowsRight(event,5)" alt="arrow" src="./icons/arrow.png" class="arrL"  ondrop="drop(event)" id="ar9">
+        <img onclick="slideRowsLeft(event,1)" alt="arrow" src="./icons/arrow.png" class="arrR"  ondrop="drop(event)" id="ar10">
+        <img onclick="slideRowsLeft(event,3)" alt="arrow" src="./icons/arrow.png" class="arrR"  ondrop="drop(event)" id="ar11">
+        <img onclick=" slideRowsLeft(event,5)" alt="arrow" src="./icons/arrow.png" class="arrR"  ondrop="drop(event)" id="ar12">
+    
+
+    </div>
+
+
+    <div id="winnerPanel" hidden > <section id="winner"> Congaratulations player 4  <img src="./icons/pl2.png" height="33px" width="33px" > <br> You are the The first Survival </section>
+    <section><button id="endWin"> Play Again</button></section>
+    </div>
+   
+ 
+
+    <script src="index.js"></script>
+</body>
+</html>
